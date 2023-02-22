@@ -7,10 +7,9 @@ public class stagaire {
 	private String Password;
 	private String Email;
 	private String GSM;
-	private String Linkedin;
 	private String St_image ;
 	
-	public stagaire(int id_Stag, String nom, String prenom, String password, String email, String gSM, String linkedin,
+	public stagaire(int id_Stag, String nom, String prenom, String password, String email, String gSM, 
 			String st_image) {
 		super();
 		Id_Stag = id_Stag;
@@ -19,11 +18,10 @@ public class stagaire {
 		Password = password;
 		Email = email;
 		GSM = gSM;
-		Linkedin = linkedin;
 		St_image = st_image;
 	}
 
-	public stagaire(String nom, String prenom, String password, String email, String gSM, String linkedin,
+	public stagaire(String nom, String prenom, String password, String email, String gSM, 
 			String st_image) {
 		super();
 		Nom = nom;
@@ -31,7 +29,6 @@ public class stagaire {
 		Password = password;
 		Email = email;
 		GSM = gSM;
-		Linkedin = linkedin;
 		St_image = st_image;
 	}
 
@@ -83,13 +80,7 @@ public class stagaire {
 		GSM = gSM;
 	}
 
-	public String getLinkedin() {
-		return Linkedin;
-	}
-
-	public void setLinkedin(String linkedin) {
-		Linkedin = linkedin;
-	}
+	
 
 	public String getSt_image() {
 		return St_image;

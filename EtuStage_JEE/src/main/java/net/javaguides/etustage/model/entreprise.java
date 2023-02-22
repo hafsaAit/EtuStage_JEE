@@ -3,22 +3,17 @@ package net.javaguides.etustage.model;
 public class entreprise {
 	
 	private int Id_Entrp;
-	private String Nom ;
-	private String Prenom;
-	private String Société;
+	private String NomEntreprise ;
 	private String Password;
 	private String GSM;
 	private String Ville;
 	private String St_image ;
 	
 	
-	public entreprise(int id_Entrp, String nom, String prenom, String société, String password, String gSM,
-			String ville, String st_image) {
+	public entreprise(int id_Entrp, String nomEntreprise, String password, String gSM, String ville, String st_image) {
 		super();
 		Id_Entrp = id_Entrp;
-		Nom = nom;
-		Prenom = prenom;
-		Société = société;
+		NomEntreprise = nomEntreprise;
 		Password = password;
 		GSM = gSM;
 		Ville = ville;
@@ -26,12 +21,9 @@ public class entreprise {
 	}
 
 
-	public entreprise(String nom, String prenom, String société, String password, String gSM, String ville,
-			String st_image) {
+	public entreprise(String nomEntreprise, String password, String gSM, String ville, String st_image) {
 		super();
-		Nom = nom;
-		Prenom = prenom;
-		Société = société;
+		NomEntreprise = nomEntreprise;
 		Password = password;
 		GSM = gSM;
 		Ville = ville;
@@ -49,33 +41,13 @@ public class entreprise {
 	}
 
 
-	public String getNom() {
-		return Nom;
+	public String getNomEntreprise() {
+		return NomEntreprise;
 	}
 
 
-	public void setNom(String nom) {
-		Nom = nom;
-	}
-
-
-	public String getPrenom() {
-		return Prenom;
-	}
-
-
-	public void setPrenom(String prenom) {
-		Prenom = prenom;
-	}
-
-
-	public String getSociété() {
-		return Société;
-	}
-
-
-	public void setSociété(String société) {
-		Société = société;
+	public void setNomEntreprise(String nomEntreprise) {
+		NomEntreprise = nomEntreprise;
 	}
 
 
@@ -119,6 +91,4 @@ public class entreprise {
 	}
 	
 	
-	
-
 }

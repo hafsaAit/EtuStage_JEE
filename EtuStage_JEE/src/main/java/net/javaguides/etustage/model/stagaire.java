@@ -1,7 +1,7 @@
 package net.javaguides.etustage.model;
 
 public class stagaire {
-	private int Id_Stag;
+	private static int Id_Stag;
 	private String Nom ;
 	private String Prenom;
 	private String Password;
@@ -35,7 +35,13 @@ public class stagaire {
 		St_image = st_image;
 	}
 
-	public int getId_Stag() {
+	public static int getId_Stag() {
+		try {
+			return Id_Stag;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Id_Stag;
 	}
 

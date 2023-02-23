@@ -6,8 +6,10 @@ import java.sql.SQLException;
 
 public class Connect {
 	String username = "root";
-	String pass = "javaDB";
-	String con_string = "jdbc:mysql://localhost:3306/etustage";
+	String pass = "";
+	String con_string = "jdbc:mysql://localhost:3325/etustage";
+	
+    
 
 	public Connection connection() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");

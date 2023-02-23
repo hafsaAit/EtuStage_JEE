@@ -2,10 +2,15 @@ package net.javaguides.etustage.model;
 
 public class entreprise {
 	
+<<<<<<< Updated upstream
 	private int Id_Entrp;
 	private String Nom ;
 	private String Prenom;
 	private String Société;
+=======
+	private static int Id_Entrp;
+	private String NomEntreprise ;
+>>>>>>> Stashed changes
 	private String Password;
 	private String GSM;
 	private String Ville;
@@ -39,7 +44,13 @@ public class entreprise {
 	}
 
 
-	public int getId_Entrp() {
+	public static int getId_Entrp() {
+		try {
+			return Id_Entrp;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return Id_Entrp;
 	}
 

@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <script src="js/welcome.js" type="text/javascript" defer></script>
-<title>Insert title here</title>
+<title>EtuStage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link

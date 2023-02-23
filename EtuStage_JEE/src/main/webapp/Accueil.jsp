@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=windows-1256"
     pageEncoding="windows-1256"%>
     <%@ page import="java.sql.*" %>
-<%
-String login="";
-  if(session.getAttribute("login")!=null){
-	  login = session.getAttribute("login").toString();
-  }else{
-	  response.sendRedirect("welcome.jsp");
-  }
 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +11,8 @@ String login="";
 <body>
 
 <div align="right"> 
-    Bonjour <%=login %><br>
-    <a href="Logout">Accueil</a>
+    Bonjour <br>
+    <a >Accueil</a>
  </div>
 </body>
 

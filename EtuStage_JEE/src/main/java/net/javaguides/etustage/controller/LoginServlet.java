@@ -10,19 +10,19 @@ import javax.servlet.http.HttpSession;
 
 
 
-
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	
-       
+	
     
     public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+   
    
      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -37,15 +37,18 @@ public class LoginServlet extends HttpServlet {
 	      String Email = request.getParameter("Email");
 	  
 	      String Password = request.getParameter("Password");
-	      
+
+			
 
 		
-						HttpSession session = request.getSession();
-						session.setAttribute("Password", Password);
-						session.setAttribute("Email", Email);
-						this.getServletContext().getRequestDispatcher("/AccueilServlet").forward(request, response);
+				HttpSession session = request.getSession();
+			    session.setAttribute("Password", Password);
+			    session.setAttribute("Email", Email);
+				this.getServletContext().getRequestDispatcher("/AccueilServlet").forward(request, response);
 						
 						
 					} 
 }
+				
+		
 	

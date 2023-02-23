@@ -55,7 +55,8 @@
 		<div class="flex items-center space-x-4">
 			<button id="loginShow" class="text-xl font-bold text-grayText">
 				Login</button>
-			<button class="btn w-[120px] h-[50px]">Sign Up</button>
+			<button id="signUpShow" class="btn w-[120px] h-[50px]">Sign
+				Up</button>
 		</div>
 	</header>
 
@@ -86,8 +87,8 @@
 			<form class="flex flex-col space-y-6 w-full" action="" method="post">
 				<input id="email" name="emailEntp"
 					class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="text"
-					placeholder="Email Entreprise" required /> <input id="password"
-					name="passwordEntp"
+					placeholder="Email Entreprise" required /> <input
+					id="password" name="passwordEntp"
 					class="outline-none py-4 rounded-xl bg-cyanBlue px-4"
 					type="password" placeholder="Password" required />
 				<button type="submit" class="btn px-16 py-4 self-center">
@@ -119,10 +120,120 @@
 			<form class="flex flex-col space-y-6 w-full" action="" method="post">
 				<input id="email" name="emailStg"
 					class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="text"
-					placeholder="Email Stagaire" required /> <input id="password"
-					name="passwordStg"
+					placeholder="Email Stagaire" required /> <input
+					id="password" name="passwordStg"
 					class="outline-none py-4 rounded-xl bg-cyanBlue px-4"
 					type="password" placeholder="Password" required />
+				<button type="submit" class="btn px-16 py-4 self-center">
+					Login</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- SignUp Pop UP Entreprise -->
+	<div id="entpSignUpPopup"
+		class="absolute hidden bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-[46%] z-20 rounded-lg drop-shadow-xl">
+		<div
+			class="relative flex flex-col items-center px-16 pt-16 pb-6 w-full rounded-lg">
+			<img id="closeThree"
+				class="absolute top-2 right-2 w-8 cursor-pointer hover:opacity-80 duration-150"
+				src="images/close.png" alt="close" />
+			<!-- item 1 -->
+			<img class="rounded-full w-24 -translate-y-[116px]"
+				src="images/LoginLogo.png" alt="LoginLogo" />
+			<!-- item 2 -->
+			<div
+				class="flex justify-between items-center space-x-20 -translate-y-20">
+				<h1
+					class="text-darkBlue cursor-pointer border-b-2 text-xl font-bold">
+					Entreprise</h1>
+				<h1 id="stgSignUp"
+					class="text-xl cursor-pointer text-gray-600 font-bold">
+					Stagaire</h1>
+			</div>
+			<!-- item 3 -->
+			<form id="entpSignUpForm"
+				class="flex flex-col items-center space-y-6 w-[700px]" action=""
+				method="post">
+				<div class="grid gap-6 w-full grid-cols-2">
+					<input id="nameSignUpEntp" name="nameSignUpEntp"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="text"
+						placeholder="Name Entreprise" required /> <input
+						id="emailSignUpEntp" name="emailSignUpEntp"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="email"
+						placeholder="Email" required /> <input
+						id="mobileSignUpEntp" name="mobileSignUpEntp"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="tel"
+						placeholder="Mobile" required /> <input
+						id="passSignUpEntp" name="passSignUpEntp"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4"
+						type="password" placeholder="Password" required /> <input
+						id="villeSignUpEntp" name="villeSignUpEntp"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="text"
+						placeholder="Ville" required /> <input
+						id="RepassSignUpEntp" name="RepassSignUpEntp"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4"
+						type="password" placeholder="Confirm Password" required />
+				</div>
+				<label
+					class="bg-red text-white font-bold rounded-[40px] text-center cursor-pointer p-2 px-6 drop-shadow-lg hover:opacity-80 duration-150"
+					for="myfile">Charge Photo</label> <input
+					class="hidden" type="file" id="myfile" name="myfile" />
+				<button id="entpBtnSubmit" type="submit"
+					class="btn px-16 py-4 self-center">Login</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- SignUp Pop UP Stagaire -->
+
+	<div id="stgSignUpPopup"
+		class="absolute hidden bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-[46%] z-20 rounded-lg drop-shadow-xl">
+		<div
+			class="relative flex flex-col items-center px-16 pt-16 pb-6 w-full rounded-lg">
+			<img id="closeFour"
+				class="absolute top-2 right-2 w-8 cursor-pointer hover:opacity-80 duration-150"
+				src="images/close.png" alt="close" />
+			<!-- item 1 -->
+			<img class="rounded-full w-24 -translate-y-[116px]"
+				src="images/LoginLogo.png" alt="LoginLogo" />
+			<!-- item 2 -->
+			<div
+				class="flex justify-between items-center space-x-20 -translate-y-20">
+				<h1 id="entpSignUp"
+					class="text-gray-600 cursor-pointer text-xl font-bold">
+					Entreprise</h1>
+				<h1
+					class="text-xl border-b-2 text-darkBlue cursor-pointer font-bold">
+					Stagaire</h1>
+			</div>
+			<!-- item 3 -->
+			<form class="flex flex-col items-center space-y-6 w-[700px]"
+				action="" method="post">
+				<div class="grid gap-6 w-full grid-cols-2">
+					<input id="FirstnameSignUpStg" name="FirstnameSignUpStg"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="text"
+						placeholder="First Name" required /> <input
+						id="LastnameSignUpStg" name="LastnameSignUpStg"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="text"
+						placeholder="Last Name" required /> <input
+						id="emailSignUpStg" name="emailSignUpStg"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="email"
+						placeholder="Email" required /> <input
+						id="mobileSignUpStg" name="mobileSignUpStg"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="tel"
+						placeholder="Mobile" required /> <input
+						id="passSignUpStg" name="passSignUpStg"
+						class="outline-none rounded-xl bg-cyanBlue px-4" type="password"
+						placeholder="Password" required /> <input
+						id="RepassSignUpStg" name="RepassSignUpStg"
+						class="outline-none py-4 rounded-xl bg-cyanBlue px-4"
+						type="password" placeholder="Confirm Password" required />
+				</div>
+				<label
+					class="bg-red text-white font-bold rounded-[40px] text-center cursor-pointer p-2 px-6 drop-shadow-lg hover:opacity-80 duration-150"
+					for="myfile">Charge Photo</label> <input
+					class="hidden" type="file" id="myfile" name="myfile" />
 				<button type="submit" class="btn px-16 py-4 self-center">
 					Login</button>
 			</form>
@@ -150,7 +261,6 @@
 		</div>
 	</section>
 
-	
 
 </body>
 </html>

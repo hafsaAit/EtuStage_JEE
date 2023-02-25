@@ -46,6 +46,16 @@ public class userOperations extends Connect  {
     }
 
 	
-	
+	public boolean checkUserLogin(String Email,String Password,String table) throws SQLException, ClassNotFoundException {
+
+        PreparedStatement preparedStatement;
+        ResultSet resultSet=null;
+        String sql="SELECT Email FROM " +table+" WHERE Email=? AND Password=?;";
+        preparedStatement=this.connection().prepareStatement(sql);
+        preparedStatement.setString(1,Email);
+        preparedStatement.setString(2,Password);
+        resultSet=  preparedStatement.executeQuery();
+        return resultSet.next();
+    }
 
 }

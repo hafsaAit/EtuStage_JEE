@@ -84,7 +84,7 @@
 					Stagaire</h1>
 			</div>
 			<!-- item 3 -->
-			<form class="flex flex-col space-y-6 w-full" action="LoginServlet"
+			<form class="flex flex-col space-y-6 w-full" action="LoginEntreprise"
 				method="post">
 				<input id="email" name="emailEntp"
 					class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="text"
@@ -118,7 +118,7 @@
 					href="#">Stagaire</h1>
 			</div>
 			<!-- item 3 -->
-			<form class="flex flex-col space-y-6 w-full" action="" method="post">
+			<form class="flex flex-col space-y-6 w-full" action="LoginStagaire" method="post">
 				<input id="email" name="emailStg"
 					class="outline-none py-4 rounded-xl bg-cyanBlue px-4" type="text"
 					placeholder="Email Stagaire" required /> <input id="password"
@@ -154,7 +154,8 @@
 			</div>
 			<!-- item 3 -->
 			<form id="entpSignUpForm"
-				class="flex flex-col items-center space-y-6 w-[700px]" action=""
+				class="flex flex-col items-center space-y-6 w-[700px]" action="RegisterEntreprise"
+				enctype="multipart/form-data"
 				method="post">
 				<div class="grid gap-6 w-full grid-cols-2">
 					<input id="nameSignUpEntp" name="nameSignUpEntp"
@@ -176,12 +177,11 @@
 						class="outline-none py-4 rounded-xl bg-cyanBlue px-4"
 						type="password" placeholder="Confirm Password" required />
 				</div>
-				<label
+				<input
 					class="bg-red text-white font-bold rounded-[40px] text-center cursor-pointer p-2 px-6 drop-shadow-lg hover:opacity-80 duration-150"
-					for="myfile">Charge Photo</label> <input class="hidden" type="file"
-					id="myfile" name="myfile" />
+					type="file" id="myfile" name="myfile" />
 				<button id="entpBtnSubmit" type="submit"
-					class="btn px-16 py-4 self-center">Login</button>
+					class="btn px-16 py-4 self-center">Sign Up</button>
 			</form>
 		</div>
 	</div>
@@ -236,7 +236,7 @@
 					class="bg-red text-white font-bold rounded-[40px] text-center cursor-pointer p-2 px-6 drop-shadow-lg hover:opacity-80 duration-150"
 					id="myfile" name="myfile" />
 				<button type="submit" class="btn px-16 py-4 self-center">
-					Login</button>
+					Sign Up</button>
 			</form>
 		</div>
 	</div>

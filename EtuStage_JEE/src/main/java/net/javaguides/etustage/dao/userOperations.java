@@ -57,5 +57,19 @@ public class userOperations extends Connect  {
         resultSet=  preparedStatement.executeQuery();
         return resultSet.next();
     }
+	
+	public int getUserId(String Email,String table) throws SQLException, ClassNotFoundException {
+
+        PreparedStatement preparedStatement;
+        ResultSet resultSet=null;
+        String sql="SELECT * FROM "+ table +" WHERE Email=?;";
+        preparedStatement=this.connection().prepareStatement(sql);
+        preparedStatement.setString(1,Email);
+        resultSet=  preparedStatement.executeQuery();
+        if (!resultSet.next()){
+            return 0;
+        }
+        return  resultSet.getInt(1);
+    }
 
 }

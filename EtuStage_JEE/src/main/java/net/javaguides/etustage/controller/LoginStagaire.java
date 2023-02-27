@@ -36,8 +36,11 @@ public class LoginStagaire extends HttpServlet {
         
         try {
 			if(operations.checkUserLogin(email, password, "stagaire")) {
+				int id = operations.getUserId(email,"stagaire"); 
 				HttpSession session = request.getSession();
 				session.setAttribute("userEmail",email);
+				session.setAttribute("type", "stagaire");
+				session.setAttribute("id", id);
 				response.sendRedirect("Accueil.jsp");
 			}else {
 				request.getRequestDispatcher("welcome.jsp").forward(request, response);

@@ -77,7 +77,7 @@
 		<!-- Part 3 -->
 
 		<div class="flex items-center space-x-4">
-			<button id="signUpShow" class="btn w-[150px] h-[60px]">Ajouter</button>
+		<a href="AjouterAnnonce.jsp"><button id="signUpShow" class="btn w-[150px] h-[60px]">Ajouter</button></a>
 		</div>
 	</header>
 	<!-- Profile  -->

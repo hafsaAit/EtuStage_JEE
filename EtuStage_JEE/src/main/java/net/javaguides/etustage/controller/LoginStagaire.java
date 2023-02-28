@@ -41,7 +41,7 @@ public class LoginStagaire extends HttpServlet {
 				session.setAttribute("userEmail",email);
 				session.setAttribute("type", "stagaire");
 				session.setAttribute("id", id);
-				response.sendRedirect("Accueil.jsp");
+				response.sendRedirect("AccueilServlet");
 			}else {
 				request.getRequestDispatcher("welcome.jsp").forward(request, response);
 			}

@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import net.javaguides.etustage.model.annonce_entreprise;
 import net.javaguides.etustage.model.entreprise;
 import net.javaguides.etustage.model.stagaire;
 
@@ -71,5 +72,19 @@ public class userOperations extends Connect  {
         }
         return  resultSet.getInt(1);
     }
+	
+	public void AddAnnonceEntreprise(annonce_entreprise anEntp) throws SQLException, ClassNotFoundException {
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "INSERT INTO annonce_entreprise(Titre,Description_Annc	,Duree,Type_Stag,Id_Entrp) VALUES(?,?,?,?,?);";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setString(1, anEntp.getTitre());
+		preparedStatement.setString(2, anEntp.getDescription_Annc());
+		preparedStatement.setString(3, anEntp.getDuree());
+		preparedStatement.setString(4, anEntp.getType_Stag());
+		preparedStatement.setInt(5, anEntp.getId_Entrp());
+		preparedStatement.executeUpdate();
+
+	}
 
 }

@@ -18,6 +18,7 @@ public class AccueilServlet extends HttpServlet {
     public AccueilServlet() {
     }
 
+    
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

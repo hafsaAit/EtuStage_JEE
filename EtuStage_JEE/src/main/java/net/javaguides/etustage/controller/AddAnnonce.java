@@ -12,16 +12,16 @@ import javax.servlet.http.HttpSession;
 
 import net.javaguides.etustage.dao.userOperations;
 import net.javaguides.etustage.model.annonce_entreprise;
+import net.javaguides.etustage.model.annonce_stagaire;
 
 @WebServlet("/AddAnnonce")
 public class AddAnnonce extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private userOperations operations;
-	
 
 	public AddAnnonce() {
-		this.operations=new userOperations();
-		
+		this.operations = new userOperations();
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,18 +33,33 @@ public class AddAnnonce extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		int id= (int) session.getAttribute("id");
+		int id = (int) session.getAttribute("id");
+		String typeOfUser = (String) session.getAttribute("type");
 		String title = request.getParameter("title");
-		String domaine=request.getParameter("domaine");
-		String type=request.getParameter("type");
-		String duree=request.getParameter("duree");
-		String description=request.getParameter("description");
-		annonce_entreprise anEntp=new annonce_entreprise(title, description, duree, type, id);
-		try {
-			operations.AddAnnonceEntreprise(anEntp);
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String domaine = request.getParameter("domaine");
+		String type = request.getParameter("type");
+		String duree = request.getParameter("duree");
+		String description = request.getParameter("description");
+		
+		System.out.println(id);
+		System.out.println(typeOfUser);
+
+		if (typeOfUser.equals("entreprise")) {
+			annonce_entreprise anEntp = new annonce_entreprise(title, description, domaine, duree, type, id);
+			try {
+				operations.AddAnnonceEntreprise(anEntp);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else  {
+			annonce_stagaire anStg=new annonce_stagaire(title, domaine, description, type, duree, id);
+			try {
+				operations.AddAnnonceStgaire(anStg);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}

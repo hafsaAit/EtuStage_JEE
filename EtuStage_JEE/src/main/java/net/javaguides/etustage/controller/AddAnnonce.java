@@ -43,7 +43,9 @@ public class AddAnnonce extends HttpServlet {
 		
 		System.out.println(id);
 		System.out.println(typeOfUser);
+		
 
+		
 		if (typeOfUser.equals("entreprise")) {
 			annonce_entreprise anEntp = new annonce_entreprise(title, description, domaine, duree, type, id);
 			try {
@@ -61,6 +63,7 @@ public class AddAnnonce extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
 
 	}
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,6 +60,7 @@
   </style>
 </head>
 <body class="overflow-hidden">
+
 	<header
 		class="bg-cyanBlue flex justify-between items-center py-4 px-8 rounded-b-2xl drop-shadow-sm">
 		<!-- Part 1 -->
@@ -69,15 +71,16 @@
 		<!-- Part 2 -->
 		<div id="links" class="flex items-center space-x-20 font-robuto">
 			<a id="Accueil" class="text-xl border-b-2 border-blue-500 opacity-80"
-				href="#">Accueil</a> <a id="Favouris"
-				class="text-xl opacity-80" href="#">Favouris</a> <a id="MesAnnonces"
-				class="text-xl opacity-80" href="#">MesAnnonces</a> <a id="Profile"
-				class="text-xl opacity-80" href="#">Profile</a>
+				href="#">Accueil</a> <a id="Favouris" class="text-xl opacity-80"
+				href="#">Favouris</a> <a id="MesAnnonces" class="text-xl opacity-80"
+				href="#">MesAnnonces</a> <a id="Profile" class="text-xl opacity-80"
+				href="#">Profile</a>
 		</div>
 		<!-- Part 3 -->
 
 		<div class="flex items-center space-x-4">
-		<a href="AjouterAnnonce.jsp"><button id="signUpShow" class="btn w-[150px] h-[60px]">Ajouter</button></a>
+			<a href="AjouterAnnonce.jsp"><button id="signUpShow"
+					class="btn w-[150px] h-[60px]">Ajouter</button></a>
 		</div>
 	</header>
 	<!-- Profile  -->
@@ -139,111 +142,64 @@
 		<div
 			class="flex flex-col space-y-10 overflow-y-scroll shadow-lg px-6 rounded-lg py-6 h-[500px]"
 			id="Container Accueil">
-			<!-- Card -->
-			<a href="#"
-				class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
-				<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
-				src="images/picture-test.webp" /> <!-- informations -->
-				<div class="flex flex-col items-start space-y-6">
-					<!-- title -->
-					<div class="flex flex-col space-y-2">
-						<h1 class="font-bold text-xl">Développeur full stack
-							javascript</h1>
-						<!-- domaine -->
-						<h2 class="text-lg text-grayText font-bold">Informatique</h2>
-					</div>
-					<!-- description -->
-					<p class="text-grayText text-lg opacity-80 font-lateef">
-						Intitulé du poste : Développeur (se) Frontend Vue / Angular/
-						ReactjsVos tâches seront entre autres : Créer des pages web à
-						l'aide des ma .......</p>
-				</div> <!-- date -->
-				<h1 class="text-grayText font-bold">1/02/2023</h1>
-			</a>
-			<!-- Card -->
-			<a href="#"
-				class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
-				<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
-				src="images/picture-test.webp" /> <!-- informations -->
-				<div class="flex flex-col items-start space-y-6">
-					<!-- title -->
-					<div class="flex flex-col space-y-2">
-						<h1 class="font-bold text-xl">Développeur full stack
-							javascript</h1>
-						<!-- domaine -->
-						<h2 class="text-lg text-grayText font-bold">Informatique</h2>
-					</div>
-					<!-- description -->
-					<p class="text-grayText text-lg opacity-80 font-lateef">
-						Intitulé du poste : Développeur (se) Frontend Vue / Angular/
-						ReactjsVos tâches seront entre autres : Créer des pages web à
-						l'aide des ma .......</p>
-				</div> <!-- date -->
-				<h1 class="text-grayText font-bold">1/02/2023</h1>
-			</a>
-			<!-- Card -->
-			<a href="#"
-				class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
-				<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
-				src="images/picture-test.webp" /> <!-- informations -->
-				<div class="flex flex-col items-start space-y-6">
-					<!-- title -->
-					<div class="flex flex-col space-y-2">
-						<h1 class="font-bold text-xl">Développeur full stack
-							javascript</h1>
-						<!-- domaine -->
-						<h2 class="text-lg text-grayText font-bold">Informatique</h2>
-					</div>
-					<!-- description -->
-					<p class="text-grayText text-lg opacity-80 font-lateef">
-						Intitulé du poste : Développeur (se) Frontend Vue / Angular/
-						ReactjsVos tâches seront entre autres : Créer des pages web à
-						l'aide des ma .......</p>
-				</div> <!-- date -->
-				<h1 class="text-grayText font-bold">1/02/2023</h1>
-			</a>
-			<!-- Card -->
-			<a href="#"
-				class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
-				<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
-				src="images/picture-test.webp" /> <!-- informations -->
-				<div class="flex flex-col items-start space-y-6">
-					<!-- title -->
-					<div class="flex flex-col space-y-2">
-						<h1 class="font-bold text-xl">Développeur full stack
-							javascript</h1>
-						<!-- domaine -->
-						<h2 class="text-lg text-grayText font-bold">Informatique</h2>
-					</div>
-					<!-- description -->
-					<p class="text-grayText text-lg opacity-80 font-lateef">
-						Intitulé du poste : Développeur (se) Frontend Vue / Angular/
-						ReactjsVos tâches seront entre autres : Créer des pages web à
-						l'aide des ma .......</p>
-				</div> <!-- date -->
-				<h1 class="text-grayText font-bold">1/02/2023</h1>
-			</a>
-			<!-- Card -->
-			<a href="#"
-				class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
-				<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
-				src="images/picture-test.webp" /> <!-- informations -->
-				<div class="flex flex-col items-start space-y-6">
-					<!-- title -->
-					<div class="flex flex-col space-y-2">
-						<h1 class="font-bold text-xl">Développeur full stack
-							javascript</h1>
-						<!-- domaine -->
-						<h2 class="text-lg text-grayText font-bold">Informatique</h2>
-					</div>
-					<!-- description -->
-					<p class="text-grayText text-lg opacity-80 font-lateef">
-						Intitulé du poste : Développeur (se) Frontend Vue / Angular/
-						ReactjsVos tâches seront entre autres : Créer des pages web à
-						l'aide des ma .......</p>
-				</div> <!-- date -->
-				<h1 class="text-grayText font-bold">1/02/2023</h1>
-			</a>
+
+			<p>
+				Welcome,
+				<c:out value="${sessionScope.type}" />
+			</p>
+			<c:if test="${sessionScope.type=='entreprise'}">
+				<c:forEach items="${annonceAccueil}" var="annonce">
+
+					<!-- Card -->
+					<a href="#"
+						class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
+						<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
+						src="store/stagaire/${annonce.getUserImage()}"
+						 /> <!-- informations -->
+						<div class="flex flex-col items-start space-y-6">
+							<!-- title -->
+							<div class="flex flex-col space-y-2">
+								<h1 class="font-bold text-xl">${annonce.getTitre_Stage()}</h1>
+								<!-- domaine -->
+								<h2 class="text-lg text-grayText font-bold">${annonce.getDomaine_Stage()}</h2>
+							</div>
+							<!-- description -->
+							<p class="text-grayText text-lg opacity-80 font-lateef">
+								${annonce.getDescription()} .......</p>
+						</div> <!-- date -->
+						<h1 class="text-grayText font-bold">1/02/2023</h1>
+					</a>
+				</c:forEach>
+
+
+			</c:if>
+
+			<c:if test="${sessionScope.type=='stagaire'}">
+				<c:forEach items="${annonceAccueil}" var="annonce">
+
+					<!-- Card -->
+					<a href="#"
+						class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
+						<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
+						src="images/picture-test.webp" /> <!-- informations -->
+						<div class="flex flex-col items-start space-y-6">
+							<!-- title -->
+							<div class="flex flex-col space-y-2">
+								<h1 class="font-bold text-xl">${annonce.getTitre()}</h1>
+								<!-- domaine -->
+								<h2 class="text-lg text-grayText font-bold">${annonce.getDomaine()}</h2>
+							</div>
+							<!-- description -->
+							<p class="text-grayText text-lg opacity-80 font-lateef">
+								${annonce.getDescription_Annc()} .......</p>
+						</div> <!-- date -->
+						<h1 class="text-grayText font-bold">1/02/2023</h1>
+					</a>
+				</c:forEach>
+
+
+			</c:if>
+
 		</div>
 
 		<!-- Favouris Cards -->

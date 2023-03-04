@@ -9,6 +9,10 @@ public class stagaire {
 	private String GSM;
 	private String St_image;
 
+	public stagaire() {
+
+	}
+
 	public stagaire(int id_Stag, String nom, String prenom, String password, String email, String gSM,
 			String st_image) {
 		super();

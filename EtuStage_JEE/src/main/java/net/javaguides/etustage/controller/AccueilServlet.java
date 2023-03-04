@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import net.javaguides.etustage.dao.userInfo;
 import net.javaguides.etustage.model.annonce_entreprise;
 import net.javaguides.etustage.model.annonce_stagaire;
+import net.javaguides.etustage.model.entreprise;
+import net.javaguides.etustage.model.stagaire;
 
 
 @WebServlet("/AccueilServlet")
@@ -34,12 +36,17 @@ public class AccueilServlet extends HttpServlet {
     	
     	request.setAttribute("message", message);
     	HttpSession session = request.getSession();
+    	int idUser=(Integer) session.getAttribute("id");
     	String typeOfUser = (String) session.getAttribute("type");
+    	
     	
     	if(typeOfUser.equals("stagaire")) {
     		getAnnonceEntreprise(request, response);
+    		getStagaireInfo(request, response, idUser);
     	}else {
     		getAnnonceStagaire(request, response);
+    		getEntrepriseInfo(request, response, idUser);
+    		getMesAnnonceEntreprise(request, response, idUser);
     	}
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("Accueil.jsp");
@@ -66,6 +73,40 @@ public class AccueilServlet extends HttpServlet {
 		try {
 			ArrayList<annonce_entreprise> listAnnonceEntreprise=userInfo.getEntrepriseeAnnonce();
 			request.setAttribute("annonceAccueil", listAnnonceEntreprise);
+			System.out.println(listAnnonceEntreprise);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void getStagaireInfo(HttpServletRequest request, HttpServletResponse response, int idUser) {
+		try {
+			stagaire stagaireInfo=userInfo.getStagaireInfo(idUser);
+			request.setAttribute("stagaireInfo", stagaireInfo);
+			System.out.println(stagaireInfo.getEmail());
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void getEntrepriseInfo(HttpServletRequest request, HttpServletResponse response, int idUser) {
+		try {
+			entreprise entrepriseInfo=userInfo.getEntrepriseInfo(idUser);
+			request.setAttribute("entrepriseInfo", entrepriseInfo);
+			System.out.println(entrepriseInfo.getEmail());
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void getMesAnnonceEntreprise (HttpServletRequest request, HttpServletResponse response,int idUser) {
+		try {
+			ArrayList<annonce_entreprise> listAnnonceEntreprise=userInfo.getEntrepriseMesAnnonce(idUser);
+			request.setAttribute("MesAnnonceEntreprise", listAnnonceEntreprise);
+			System.out.println(listAnnonceEntreprise);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

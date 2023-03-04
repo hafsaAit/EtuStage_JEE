@@ -9,6 +9,7 @@ public class annonce_entreprise {
 	private String Duree;
 	private String Type_Stag;
 	private int Id_Entrp;
+	private String St_image;
 	
 	
 	public annonce_entreprise(int id_AnnEntrp, String titre,String domaine, String description_Annc,  String duree,
@@ -23,6 +24,19 @@ public class annonce_entreprise {
 		Id_Entrp = id_Entrp;
 	}
 
+	
+	public annonce_entreprise(int id_AnnEntrp, String titre,String domaine, String description_Annc,  String duree,
+			String type_Stag, int id_Entrp,String image) {
+		super();
+		Id_AnnEntrp = id_AnnEntrp;
+		Titre = titre;
+		Description_Annc = description_Annc;
+		Domaine=domaine;
+		Duree = duree;
+		Type_Stag = type_Stag;
+		Id_Entrp = id_Entrp;
+		St_image=image;
+	}
 
 	public annonce_entreprise(String titre,String domaine, String description_Annc,  String duree, String type_Stag,
 			int id_Entrp) {
@@ -107,7 +121,16 @@ public class annonce_entreprise {
 	public void setDomaine(String domaine) {
 		Domaine = domaine;
 	}
-	
+
+
+	public String getSt_image() {
+		return St_image;
+	}
+
+
+	public void setSt_image(String st_image) {
+		St_image = st_image;
+	}
 	
 	
 

@@ -75,6 +75,7 @@ public class RegisterEntreprise extends HttpServlet {
 			entreprise entreprise=new entreprise(NomEntreprise, email, password, gsm, ville, imageFileName);
 			try {
 				registre.insertOnEntrepriseTable(entreprise);
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

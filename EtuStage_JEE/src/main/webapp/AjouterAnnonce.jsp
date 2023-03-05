@@ -86,7 +86,8 @@
 				<div class="flex justify-center px-28">
 					<textarea placeholder="Description"
 						class="outline-none w-full py-4 px-6 rounded-xl bg-cyanBlue"
-						maxlength="20" name="description" cols="30" rows="6"></textarea>
+						minlength="200"
+						maxlength="2000" name="description" cols="30" rows="6"></textarea>
 				</div>
 			</div>
 			<div class="flex justify-center mt-10">

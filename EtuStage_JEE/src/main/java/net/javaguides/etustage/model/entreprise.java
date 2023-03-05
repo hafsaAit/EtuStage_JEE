@@ -9,7 +9,23 @@ public class entreprise {
 	private String GSM;
 	private String Ville;
 	private String St_image;
+	
+	 public entreprise() {
+		
+	}
 
+	 
+	 public entreprise(int id,String nomEntreprise, String email, String password, String gSM, String ville, String st_image) {
+			super();
+			Id_Entrp=id;
+			NomEntreprise = nomEntreprise;
+			Email = email;
+			Password = password;
+			GSM = gSM;
+			Ville = ville;
+			St_image = st_image;
+		}
+	 
 	public entreprise(String nomEntreprise, String email, String password, String gSM, String ville, String st_image) {
 		super();
 		NomEntreprise = nomEntreprise;

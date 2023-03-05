@@ -75,6 +75,7 @@ public class RegisterStagaire extends HttpServlet {
 			stagaire stagaire = new stagaire(nom, prenom, password, email, gsm, imageFileName);
 			try {
 				registre.insertOnStagaireTable(stagaire);
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

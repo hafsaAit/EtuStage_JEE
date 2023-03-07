@@ -203,8 +203,8 @@
 		</c:if>
 	</div>
 	<section id="appContainer" class="container mx-auto px-32 mt-20">
-	
-	
+
+
 		<!-- Accueil Cards -->
 		<div
 			class="flex flex-col space-y-10 overflow-y-scroll shadow-lg px-6 rounded-lg py-6 h-[500px]"
@@ -218,7 +218,7 @@
 				<c:forEach items="${annonceAccueil}" var="annonce">
 
 					<!-- Card -->
-					<a href="#"
+					<a href="showAnnonce?id=${annonce.getId_AnnSatg()}"
 						class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
 						<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
 						src="store/stagaire/${annonce.getUserImage()}" /> <!-- informations -->
@@ -231,7 +231,7 @@
 							</div>
 							<!-- description -->
 							<p class="text-grayText text-lg opacity-80 font-lateef">
-								${annonce.getDescription()} .......</p>
+								${annonce.getFirst50Chars()} .......</p>
 						</div> <!-- date -->
 						<h1 class="text-grayText font-bold">1/02/2023</h1>
 					</a>
@@ -244,7 +244,7 @@
 				<c:forEach items="${annonceAccueil}" var="annonce">
 
 					<!-- Card -->
-					<a href="#"
+					<a href="showAnnonce?id=${annonce.getId_AnnEntrp()}"
 						class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-cyangreen">
 						<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
 						src="store/entreprise/${annonce.getSt_image()}" /> <!-- informations -->
@@ -257,7 +257,7 @@
 							</div>
 							<!-- description -->
 							<p class="text-grayText text-lg opacity-80 font-lateef">
-								${annonce.getDescription_Annc()} .......</p>
+								${annonce.getFirst50Chars()} .......</p>
 						</div> <!-- date -->
 						<h1 class="text-grayText font-bold">1/02/2023</h1>
 					</a>
@@ -385,42 +385,80 @@
 			id="Container MesAnnonces">
 			<!-- Card -->
 			<c:if test="${sessionScope.type=='entreprise'}">
-			<c:forEach items="${MesAnnonceEntreprise}" var="MesAnnonces">
-			<div class="flex bg-softGreen p-4 rounded-lg">
-				<a href="#" class="flex space-x-6 drop-shadow-sm"> <!-- picture -->
-					<img class="w-[194px] h-[175px] rounded-xl"
-					src="store/entreprise/${MesAnnonces.getSt_image()}" /> <!-- informations -->
-					<div class="flex flex-col items-start space-y-6">
-						<!-- title -->
-						<div class="flex flex-col space-y-2">
-							<h1 class="font-bold text-xl">${MesAnnonces.getTitre()}</h1>
-							<!-- domaine -->
-							<h2 class="text-lg text-grayText font-bold">${MesAnnonces.getDomaine()}</h2>
+				<c:forEach items="${MesAnnonceEntreprise}" var="MesAnnonces">
+					<div class="flex bg-softGreen p-4 rounded-lg">
+						<a href="#" class="flex space-x-6 drop-shadow-sm"> <!-- picture -->
+							<img class="w-[194px] h-[175px] rounded-xl"
+							src="store/entreprise/${MesAnnonces.getSt_image()}" /> <!-- informations -->
+							<div class="flex flex-col items-start space-y-6">
+								<!-- title -->
+								<div class="flex flex-col space-y-2">
+									<h1 class="font-bold text-xl">${MesAnnonces.getTitre()}</h1>
+									<!-- domaine -->
+									<h2 class="text-lg text-grayText font-bold">${MesAnnonces.getDomaine()}</h2>
+								</div>
+								<!-- description -->
+								<p class="text-grayText text-lg opacity-80 font-lateef">
+									${MesAnnonces.getFirst50Chars()} .....</p>
+							</div>
+						</a>
+						<!-- actions -->
+						<div class="flex items-end justify-between flex-col p-2">
+							<!-- date -->
+							<h1 class="text-grayText font-bold">1/02/2023</h1>
+							<div class="flex space-x-2">
+								<button
+									class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
+									Update</button>
+								<button
+									class="bg-red text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
+									Delete</button>
+							</div>
 						</div>
-						<!-- description -->
-						<p class="text-grayText text-lg opacity-80 font-lateef">
-							${MesAnnonces.getDescription_Annc()} .....</p>
 					</div>
-				</a>
-				<!-- actions -->
-				<div class="flex items-end justify-between flex-col p-2">
-					<!-- date -->
-					<h1 class="text-grayText font-bold">1/02/2023</h1>
-					<div class="flex space-x-2">
-						<button
-							class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
-							Update</button>
-						<button
-							class="bg-red text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
-							Delete</button>
-					</div>
-				</div>
-			</div>
-			
-			</c:forEach>
-			
+
+				</c:forEach>
+
 			</c:if>
 
+
+			<!-- Card -->
+			<c:if test="${sessionScope.type=='stagaire'}">
+				<c:forEach items="${MesAnnonceStagaire}" var="MesAnnonces">
+					<div class="flex bg-softGreen p-4 rounded-lg">
+						<a href="#" class="flex space-x-6 drop-shadow-sm"> <!-- picture -->
+							<img class="w-[194px] h-[175px] rounded-xl"
+							src="store/stagaire/${MesAnnonces.getUserImage()}" /> <!-- informations -->
+							<div class="flex flex-col items-start space-y-6">
+								<!-- title -->
+								<div class="flex flex-col space-y-2">
+									<h1 class="font-bold text-xl">${MesAnnonces.getTitre_Stage()}</h1>
+									<!-- domaine -->
+									<h2 class="text-lg text-grayText font-bold">${MesAnnonces.getDomaine_Stage()}</h2>
+								</div>
+								<!-- description -->
+								<p class="text-grayText text-lg opacity-80 font-lateef">
+									${MesAnnonces.getFirst50Chars()} .....</p>
+							</div>
+						</a>
+						<!-- actions -->
+						<div class="flex items-end justify-between flex-col p-2">
+							<!-- date -->
+							<h1 class="text-grayText font-bold">1/02/2023</h1>
+							<div class="flex space-x-2">
+								<button
+									class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
+									Update</button>
+								<button
+									class="bg-red text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
+									Delete</button>
+							</div>
+						</div>
+					</div>
+
+				</c:forEach>
+
+			</c:if>
 
 		</div>
 	</section>

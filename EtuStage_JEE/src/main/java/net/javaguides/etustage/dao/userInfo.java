@@ -99,4 +99,38 @@ public class userInfo extends Connect {
 		}
 		return listOfEntrepriseAnnonce;
 	}
+
+	public annonce_stagaire getAnnonceStagaireInfo(int id) throws SQLException, ClassNotFoundException {
+
+		annonce_stagaire stg = new annonce_stagaire();
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "SELECT * FROM annonce_stagaire where Id_AnnSatg=?";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setInt(1, id);
+		resultSet = preparedStatement.executeQuery();
+		while (resultSet.next()) {
+			stg = new annonce_stagaire(resultSet.getInt("Id_AnnSatg"), resultSet.getString("Titre_Stage"),
+					resultSet.getString("Domaine_Stage"), resultSet.getString("Description"),
+					resultSet.getString("Type_stage"), resultSet.getString("Duree"), resultSet.getInt("Id_Stag"));
+		}
+		return stg;
+	}
+
+	public annonce_entreprise getAnnonceEntrepriseInfo(int id) throws SQLException, ClassNotFoundException {
+
+		annonce_entreprise entp = new annonce_entreprise();
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "SELECT * FROM annonce_entreprise where Id_AnnEntp=?";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setInt(1, id);
+		resultSet = preparedStatement.executeQuery();
+		while (resultSet.next()) {
+			entp = new annonce_entreprise(resultSet.getInt("Id_AnnEntp"), resultSet.getString("Titre"),
+					resultSet.getString("domaine"), resultSet.getString("Description_Annc"),
+					resultSet.getString("Duree"), resultSet.getString("Type_Stag"), resultSet.getInt("Id_Entrp"));
+		}
+		return entp;
+	}
 }

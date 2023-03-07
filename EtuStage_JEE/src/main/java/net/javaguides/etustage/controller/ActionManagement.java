@@ -1,4 +1,3 @@
-
 package net.javaguides.etustage.controller;
 
 import java.io.IOException;
@@ -12,51 +11,80 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.javaguides.etustage.dao.userInfo;
 import net.javaguides.etustage.dao.userOperations;
 import net.javaguides.etustage.model.annonce_entreprise;
 import net.javaguides.etustage.model.annonce_stagaire;
+import net.javaguides.etustage.model.entreprise;
+import net.javaguides.etustage.model.stagaire;
 
-@WebServlet("/")
+@WebServlet("/showAnnonce")
 public class ActionManagement extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private userOperations operations;
+	private userInfo userInfo;
 
 	public ActionManagement() {
-		this.operations = new userOperations();
-
+		super();
+		this.userInfo = new userInfo();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String action = request.getServletPath();
-		switch (action) {
-		case "/showAnnonce":
-
-			System.out.println("ddddddddddddd" + action);
-			int id = Integer.parseInt(request.getParameter("id"));
-			System.out.println("---->" + id);
-			break;
-
-		default:
-
-			showWelcomePage(request, response);
-
-			break;
-
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession();
+    	String typeOfUser = (String) session.getAttribute("type");
+		System.out.println("---->" + id);
+		
+		if(typeOfUser.equals("entreprise")) {
+			try {
+				showAnnonceStagaireDetail(request, response, id);
+			} catch (ClassNotFoundException | ServletException | IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			try {
+				showAnnonceEntrepriseDetail(request, response, id);
+			} catch (ClassNotFoundException | ServletException | IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
 
 	}
+
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
 
+		doGet(request, response);
 	}
 
-	private void showWelcomePage(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
+	private void showAnnonceStagaireDetail(HttpServletRequest request, HttpServletResponse response,int id)
+			throws ServletException, IOException, ClassNotFoundException, SQLException {
+		annonce_stagaire annonce_stagaire=userInfo.getAnnonceStagaireInfo(id);
+		stagaire stagaire=userInfo.getStagaireInfo(annonce_stagaire.getId_Stag());
+		
+		
+		request.setAttribute("stagaire", stagaire); 
+		request.setAttribute("annonce_stagaire", annonce_stagaire);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("AnnonceDetail.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void showAnnonceEntrepriseDetail(HttpServletRequest request, HttpServletResponse response,int id)
+			throws ServletException, IOException, ClassNotFoundException, SQLException {
+		annonce_entreprise annonce_entreprise=userInfo.getAnnonceEntrepriseInfo(id);
+		entreprise entreprise=userInfo.getEntrepriseInfo(annonce_entreprise.getId_Entrp());
+		
+		
+		request.setAttribute("entreprise", entreprise); 
+		request.setAttribute("annonce_entreprise", annonce_entreprise);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("AnnonceDetail.jsp");
 		dispatcher.forward(request, response);
 	}
 }

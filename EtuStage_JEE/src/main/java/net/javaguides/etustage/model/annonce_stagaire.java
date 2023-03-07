@@ -14,6 +14,10 @@ public class annonce_stagaire {
 	private int Id_Stag;
 	private String userImage;
 
+	public annonce_stagaire() {
+
+	}
+
 	public annonce_stagaire(int id_AnnSatg, String titre_Stage, String domaine_Stage, String description,
 			String type_stage, String duree, int id_Stag, String userimage) {
 		super();
@@ -114,4 +118,7 @@ public class annonce_stagaire {
 		this.userImage = userImage;
 	}
 
+	public String getFirst50Chars() {
+		return this.getDescription().substring(0, 150);
+	}
 }

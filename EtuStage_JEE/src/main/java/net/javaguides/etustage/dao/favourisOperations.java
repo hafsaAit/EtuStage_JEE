@@ -45,27 +45,30 @@ public class favourisOperations extends Connect {
 		return listOfFavoriteEntreprise;
 	}
 	
-	public void deleteAnnonceStag(int id_Stag) throws SQLException, ClassNotFoundException {
-        PreparedStatement preparedStatement;
-        ResultSet resultSet=null;
-        String sql="DELETE FROM  favouris_stagaire WHERE  favouris_stagaire.Id_stag = id_fav ;";
-        preparedStatement = this.connection().prepareStatement(sql);
-		preparedStatement.setInt(1, id_Stag);
-		
-
-		resultSet = preparedStatement.executeQuery();
-		
-		
-	}
 	
-	public void deleteAnnonceEntrp(int id_Entrp) throws SQLException, ClassNotFoundException {
+		
+	
+	public void deleteAnnonceStag(int id_Stag, int id_fav) throws SQLException, ClassNotFoundException {
+	    PreparedStatement preparedStatement;
+	    ResultSet resultSet=null;
+	    String sql="DELETE FROM  favouris_stagaire WHERE  favouris_stagaire.Id_stag = ? AND favouris_stagaire.Id_fav = ?";
+	    preparedStatement = this.connection().prepareStatement(sql);
+	    preparedStatement.setInt(1, id_Stag);
+	    preparedStatement.setInt(2, id_fav);
+
+	    preparedStatement.executeUpdate();
+	}
+
+	
+	public void deleteAnnonceEntrp(int id_Entrp, int id_fav) throws SQLException, ClassNotFoundException {
         PreparedStatement preparedStatement;
         ResultSet resultSet=null;
-        String sql="DELETE FROM  favouris_entreprise WHERE  favouris_entreprise.Id_Entrp = id_fav;";
+        String sql="DELETE FROM  favouris_entreprise WHERE  favouris_entreprise.Id_Entrp =? and favouris_entreprise.id_fav =? ";
         preparedStatement = this.connection().prepareStatement(sql);
 		preparedStatement.setInt(1, id_Entrp);
+		preparedStatement.setInt(2, id_fav);
 
-		resultSet = preparedStatement.executeQuery();
+		preparedStatement.executeUpdate();
 		
 		
 	}

@@ -4,8 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-
+import java.util.List;
 
 import net.javaguides.etustage.model.favouris_entreprise;
 import net.javaguides.etustage.model.favouris_stagaire;
@@ -72,5 +71,38 @@ public class favourisOperations extends Connect {
 		
 		
 	}
+	
+	//récupère la liste des annonces favorites pour un utilisateur spécifique
+	
+	public List<Integer> getFavoris(int id_Stag) throws SQLException, ClassNotFoundException {
+	    PreparedStatement preparedStatement;
+	    ResultSet resultSet=null;
+	    List<Integer> favoris = new ArrayList<Integer>();
+	    String sql="SELECT Id_fav FROM favouris_stagaire WHERE Id_stag = ?";
+	    preparedStatement = this.connection().prepareStatement(sql);
+	    preparedStatement.setInt(1, id_Stag);
+
+	    resultSet = preparedStatement.executeQuery();
+	    while (resultSet.next()) {
+	        favoris.add(resultSet.getInt("Id_fav"));
+	    }
+	    return favoris;
+	}
+	
+	public List<Integer> getFavorisEntrp (int id_Entrp) throws SQLException, ClassNotFoundException {
+	    PreparedStatement preparedStatement;
+	    ResultSet resultSet=null;
+	    List<Integer> favoris = new ArrayList<Integer>();
+	    String sql="SELECT Id_fav FROM favouris_entreprise WHERE Id_Entrp = ?";
+	    preparedStatement = this.connection().prepareStatement(sql);
+	    preparedStatement.setInt(1, id_Entrp);
+
+	    resultSet = preparedStatement.executeQuery();
+	    while (resultSet.next()) {
+	        favoris.add(resultSet.getInt("Id_fav"));
+	    }
+	    return favoris;
+	}
+
 	
 }

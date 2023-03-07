@@ -61,7 +61,7 @@ public class favourisOperations extends Connect {
 	public void deleteAnnonceEntrp(int id_Entrp) throws SQLException, ClassNotFoundException {
         PreparedStatement preparedStatement;
         ResultSet resultSet=null;
-        String sql="DELETE FROM  favouris_entreprise WHERE  favouris_entreprise.Id_Entrp = id_Entrp;";
+        String sql="DELETE FROM  favouris_entreprise WHERE  favouris_entreprise.Id_Entrp = id_fav;";
         preparedStatement = this.connection().prepareStatement(sql);
 		preparedStatement.setInt(1, id_Entrp);
 

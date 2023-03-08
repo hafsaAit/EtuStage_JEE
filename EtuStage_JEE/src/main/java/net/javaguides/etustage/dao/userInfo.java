@@ -100,6 +100,25 @@ public class userInfo extends Connect {
 		return listOfEntrepriseAnnonce;
 	}
 
+	public ArrayList<annonce_stagaire> getStagaireMesAnnonce(int id) throws SQLException, ClassNotFoundException {
+
+		ArrayList<annonce_stagaire> listOfStagaireAnnonce = new ArrayList<>();
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "SELECT * FROM annonce_stagaire JOIN stagaire WHERE  annonce_stagaire.Id_Stag=? AND annonce_stagaire.Id_Stag=stagaire.Id_Stag";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setInt(1, id);
+		resultSet = preparedStatement.executeQuery();
+		while (resultSet.next()) {
+			listOfStagaireAnnonce.add(new annonce_stagaire(resultSet.getInt("Id_AnnSatg"),
+					resultSet.getString("Titre_Stage"), resultSet.getString("Domaine_Stage"),
+					resultSet.getString("Description"), resultSet.getString("Type_stage"),
+					resultSet.getNString("Duree"), resultSet.getInt("Id_Stag"), resultSet.getString("St_image")));
+		}
+		return listOfStagaireAnnonce;
+	}
+
+	
 	public annonce_stagaire getAnnonceStagaireInfo(int id) throws SQLException, ClassNotFoundException {
 
 		annonce_stagaire stg = new annonce_stagaire();

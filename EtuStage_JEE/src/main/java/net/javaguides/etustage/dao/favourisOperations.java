@@ -9,6 +9,30 @@ import net.javaguides.etustage.model.favouris_entreprise;
 import net.javaguides.etustage.model.favouris_stagaire;
 
 public class favourisOperations extends Connect {
+
+	public boolean checkStagaireAnnonceisFavourite(int annonceId) throws SQLException, ClassNotFoundException {
+
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "SELECT *  FROM favouris_entreprise  WHERE id_AnnStag=?;";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setInt(1, annonceId);
+		resultSet = preparedStatement.executeQuery();
+		return resultSet.next();
+	}
+
+	
+	public void addAnnonceStagaireToFavouris(int id_Entrp, int id_AnnStag) throws SQLException, ClassNotFoundException {
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "INSERT INTO favouris_entreprise(id_Entrp,id_AnnStag) VALUES(?,?);";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setInt(1, id_Entrp);
+		preparedStatement.setInt(2, id_AnnStag);
+		preparedStatement.executeUpdate();
+
+	}
+	
 	public ArrayList<favouris_stagaire> getFavourisStagaire() throws SQLException, ClassNotFoundException {
 
 		ArrayList<favouris_stagaire> listOfFavoriteStagaire = new ArrayList<>();

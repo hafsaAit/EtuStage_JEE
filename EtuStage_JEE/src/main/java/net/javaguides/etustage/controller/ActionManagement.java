@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.javaguides.etustage.dao.favourisOperations;
 import net.javaguides.etustage.dao.userInfo;
 import net.javaguides.etustage.dao.userOperations;
 import net.javaguides.etustage.model.annonce_entreprise;
@@ -22,10 +23,12 @@ import net.javaguides.etustage.model.stagaire;
 public class ActionManagement extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private userInfo userInfo;
+	private favourisOperations favourisOperations;
 
 	public ActionManagement() {
 		super();
 		this.userInfo = new userInfo();
+		this.favourisOperations=new favourisOperations();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -68,10 +71,11 @@ public class ActionManagement extends HttpServlet {
 			throws ServletException, IOException, ClassNotFoundException, SQLException {
 		annonce_stagaire annonce_stagaire=userInfo.getAnnonceStagaireInfo(id);
 		stagaire stagaire=userInfo.getStagaireInfo(annonce_stagaire.getId_Stag());
-		
+		boolean isFavourit=favourisOperations.checkStagaireAnnonceisFavourite(id);
 		
 		request.setAttribute("stagaire", stagaire); 
 		request.setAttribute("annonce_stagaire", annonce_stagaire);
+		request.setAttribute("isFavourite", isFavourit);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("AnnonceDetail.jsp");
 		dispatcher.forward(request, response);
 	}

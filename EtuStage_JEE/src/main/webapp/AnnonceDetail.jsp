@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<script src="js/annonceDetail.js" type="text/javascript" defer></script>
+
 <title>EtuStage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -67,11 +67,22 @@
 		<div class="flex flex-col">
 			<!-- bg -->
 			<div class="relative">
-				<img src="images/picture-test-2 1.png" /> <img id="active"
-					class="hidden absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
-					src="images/favouris-active.png" /> <img id="passive"
-					class="absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
-					src="images/favouris.png" />
+				<img src="images/picture-test-2 1.png" />
+				<c:if test="${requestScope.isFavourite==true}">
+					<img id="active"
+						class="absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
+						src="images/favouris-active.png" />
+				</c:if>
+
+
+				<c:if test="${requestScope.isFavourite==false}">
+					<a href="addFavouris?id=${annonceStagaire.getId_AnnSatg()}"><img
+						id="passive"
+						class="absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
+						src="images/favouris.png" /> </a>
+
+				</c:if>
+
 			</div>
 			<div class="flex flex-col items-center space-y-4 -translate-y-40">
 				<img class="w-[250px] h-[250px] rounded-full cursor-pointer"
@@ -132,9 +143,10 @@
 		</div>
 	</c:if>
 
-<c:if test="${sessionScope.type=='stagaire'}">
+	<c:if test="${sessionScope.type=='stagaire'}">
 		<c:set var="entreprise" value="${requestScope.entreprise}" />
-		<c:set var="annonceEntreprise" value="${requestScope.annonce_entreprise}" />
+		<c:set var="annonceEntreprise"
+			value="${requestScope.annonce_entreprise}" />
 		<div class="flex flex-col">
 			<!-- bg -->
 			<div class="relative">

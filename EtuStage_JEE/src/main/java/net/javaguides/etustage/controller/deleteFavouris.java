@@ -13,15 +13,14 @@ import javax.servlet.http.HttpSession;
 
 import net.javaguides.etustage.dao.favourisOperations;
 
-@WebServlet("/addFavouris")
-public class addFavouris extends HttpServlet {
+@WebServlet("/deleteFavouris")
+public class deleteFavouris extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private favourisOperations addFavouris;
 
-	public addFavouris() {
+	public deleteFavouris() {
 		super();
 		this.addFavouris = new favourisOperations();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,22 +31,12 @@ public class addFavouris extends HttpServlet {
 		String typeOfUser = (String) session.getAttribute("type");
 		int idUser = (int) session.getAttribute("id");
 		
-		if(typeOfUser.equals("entreprise")) {
-			try {
-				addAnnonceStagaireToFav(request, response, idUser, id);
-			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}else {
-			try {
-				addAnnonceEntrepriseToFav(request, response, idUser, id);
-			} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			DeleteAnnonceStagaireFromFav(request, response, idUser, id);
+		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
 
 	}
 
@@ -57,21 +46,19 @@ public class addFavouris extends HttpServlet {
 		doGet(request, response);
 	}
 
-	protected void addAnnonceStagaireToFav(HttpServletRequest request, HttpServletResponse response, int id_Entrp,
+	protected void DeleteAnnonceStagaireFromFav(HttpServletRequest request, HttpServletResponse response, int id_Entrp,
 			int id_AnnStag) throws ClassNotFoundException, SQLException, ServletException, IOException {
-		addFavouris.addAnnonceStagaireToFavouris(id_Entrp, id_AnnStag);
-		
-		//need some updates 
-		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/showAnnonce?id="+id_AnnStag);
+
+		addFavouris.deleteAnnonceEntrp(id_Entrp, id_AnnStag);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/showAnnonce?id=" + id_AnnStag);
 		dispatcher.forward(request, response);
 	}
 	
-	protected void addAnnonceEntrepriseToFav(HttpServletRequest request, HttpServletResponse response, int id_Stag,
-			int id_AnnEntrp) throws ClassNotFoundException, SQLException, ServletException, IOException {
-		addFavouris.addAnnonceEntrepriseToFavouris(id_Stag, id_AnnEntrp);
-		
-		//need some updates 
-		RequestDispatcher dispatcher=request.getRequestDispatcher("/showAnnonce?id="+id_AnnEntrp);
+	protected void DeleteAnnonceEntrepriseFromFav(HttpServletRequest request, HttpServletResponse response, int id_Entrp,
+			int id_AnnStag) throws ClassNotFoundException, SQLException, ServletException, IOException {
+
+		addFavouris.deleteAnnonceEntrp(id_Entrp, id_AnnStag);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/showAnnonce?id=" + id_AnnStag);
 		dispatcher.forward(request, response);
 	}
 }

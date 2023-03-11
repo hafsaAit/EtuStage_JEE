@@ -84,10 +84,11 @@ public class ActionManagement extends HttpServlet {
 			throws ServletException, IOException, ClassNotFoundException, SQLException {
 		annonce_entreprise annonce_entreprise=userInfo.getAnnonceEntrepriseInfo(id);
 		entreprise entreprise=userInfo.getEntrepriseInfo(annonce_entreprise.getId_Entrp());
-		
+		boolean isFavourit=favourisOperations.checkEntrepriseAnnonceisFavourite(id);
 		
 		request.setAttribute("entreprise", entreprise); 
 		request.setAttribute("annonce_entreprise", annonce_entreprise);
+		request.setAttribute("isFavourite", isFavourit);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("AnnonceDetail.jsp");
 		dispatcher.forward(request, response);
 	}

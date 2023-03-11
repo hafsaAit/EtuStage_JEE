@@ -68,10 +68,21 @@
 			<!-- bg -->
 			<div class="relative">
 				<img src="images/picture-test-2 1.png" />
+				<a href="/EtuStage_JEE/AccueilServlet">
+					<img
+						class="z-20 absolute bottom-44 left-8 cursor-pointer hover:opacity-80 duration-150 "
+						src="images/close.png">
+
+				</a>
+
+
 				<c:if test="${requestScope.isFavourite==true}">
-					<img id="active"
+					<a href="deleteFavouris?id=${annonceStagaire.getId_AnnSatg()}">
+						<img id="active"
 						class="absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
 						src="images/favouris-active.png" />
+					</a>
+
 				</c:if>
 
 
@@ -150,11 +161,31 @@
 		<div class="flex flex-col">
 			<!-- bg -->
 			<div class="relative">
-				<img src="images/picture-test-2 1.png" /> <img id="active"
-					class="hidden absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
-					src="images/favouris-active.png" /> <img id="passive"
-					class="absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
-					src="images/favouris.png" />
+
+				<img src="images/picture-test-2 1.png" />
+
+				<a href="/EtuStage_JEE/AccueilServlet">
+					<img
+						class="z-20 absolute bottom-44 left-8 cursor-pointer hover:opacity-80 duration-150 "
+						src="images/close.png">
+				</a>
+
+
+				<c:if test="${requestScope.isFavourite==true}">
+
+					<img id="active"
+						class="absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
+						src="images/favouris-active.png" />
+				</c:if>
+				<c:if test="${requestScope.isFavourite==false}">
+					<a href="addFavouris?id=${annonceEntreprise.getId_AnnEntrp()}">
+						<img id="passive"
+						class="absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
+						src="images/favouris.png" />
+					</a>
+
+				</c:if>
+
 			</div>
 			<div class="flex flex-col items-center space-y-4 -translate-y-40">
 				<img class="w-[250px] h-[250px] rounded-full cursor-pointer"

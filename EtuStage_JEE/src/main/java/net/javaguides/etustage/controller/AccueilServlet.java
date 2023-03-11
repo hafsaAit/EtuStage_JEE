@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.javaguides.etustage.dao.favourisOperations;
 import net.javaguides.etustage.dao.userInfo;
 import net.javaguides.etustage.model.annonce_entreprise;
 import net.javaguides.etustage.model.annonce_stagaire;
@@ -22,9 +23,11 @@ import net.javaguides.etustage.model.stagaire;
 public class AccueilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private userInfo userInfo;
+	private favourisOperations favourisOperations;
 
 	public AccueilServlet() {
 		this.userInfo = new userInfo();
+		this.favourisOperations=new favourisOperations();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,6 +48,7 @@ public class AccueilServlet extends HttpServlet {
 			getAnnonceStagaire(request, response);
 			getEntrepriseInfo(request, response, idUser);
 			getMesAnnonceEntreprise(request, response, idUser);
+			getFavourisEntreprise(request, response, idUser);
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("Accueil.jsp");
@@ -114,6 +118,17 @@ public class AccueilServlet extends HttpServlet {
 		try {
 			ArrayList<annonce_stagaire> listAnnonceStagaire = userInfo.getStagaireMesAnnonce(idUser);
 			request.setAttribute("MesAnnonceStagaire", listAnnonceStagaire);
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void getFavourisEntreprise(HttpServletRequest request, HttpServletResponse response, int idUser) {
+		try {
+			ArrayList<annonce_stagaire> listofFavEntreprise =favourisOperations.getFavourisEntreprise(idUser) ;
+			request.setAttribute("listofFavEntreprise", listofFavEntreprise);
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

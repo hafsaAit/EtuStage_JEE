@@ -67,11 +67,10 @@
 		<div class="flex flex-col">
 			<!-- bg -->
 			<div class="relative">
-				<img src="images/picture-test-2 1.png" />
-				<a href="/EtuStage_JEE/AccueilServlet">
-					<img
-						class="z-20 absolute bottom-44 left-8 cursor-pointer hover:opacity-80 duration-150 "
-						src="images/close.png">
+				<img src="images/picture-test-2 1.png" /> <a
+					href="/EtuStage_JEE/AccueilServlet"> <img
+					class="z-20 absolute bottom-44 left-8 cursor-pointer hover:opacity-80 duration-150 "
+					src="images/close.png">
 
 				</a>
 
@@ -162,20 +161,20 @@
 			<!-- bg -->
 			<div class="relative">
 
-				<img src="images/picture-test-2 1.png" />
-
-				<a href="/EtuStage_JEE/AccueilServlet">
-					<img
-						class="z-20 absolute bottom-44 left-8 cursor-pointer hover:opacity-80 duration-150 "
-						src="images/close.png">
+				<img src="images/picture-test-2 1.png" /> <a
+					href="/EtuStage_JEE/AccueilServlet"> <img
+					class="z-20 absolute bottom-44 left-8 cursor-pointer hover:opacity-80 duration-150 "
+					src="images/close.png">
 				</a>
 
 
 				<c:if test="${requestScope.isFavourite==true}">
-
-					<img id="active"
+					<a href="deleteFavouris?id=${annonce_entreprise.getId_AnnEntrp()}">
+						<img id="active"
 						class="absolute top-1/2 right-12 translate-y-20 z-20 cursor-pointer"
 						src="images/favouris-active.png" />
+					</a>
+
 				</c:if>
 				<c:if test="${requestScope.isFavourite==false}">
 					<a href="addFavouris?id=${annonceEntreprise.getId_AnnEntrp()}">

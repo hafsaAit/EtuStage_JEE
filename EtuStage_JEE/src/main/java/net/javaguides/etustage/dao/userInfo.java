@@ -152,4 +152,24 @@ public class userInfo extends Connect {
 		}
 		return entp;
 	}
+	
+	public void deleteAnnonceEntrp(int id_AnnEntrp) throws SQLException, ClassNotFoundException {
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "DELETE FROM  annonce_entreprise WHERE  annonce_entreprise.Id_AnnEntp =?";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setInt(1, id_AnnEntrp);
+		preparedStatement.executeUpdate();
+
+	}
+	
+	public void deleteAnnonceStag(int id_AnnStag) throws SQLException, ClassNotFoundException {
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "DELETE FROM  annonce_stagaire WHERE  annonce_stagaire.Id_AnnSatg=?";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setInt(1, id_AnnStag);
+		preparedStatement.executeUpdate();
+
+	}
 }

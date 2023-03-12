@@ -11,42 +11,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.javaguides.etustage.dao.favourisOperations;
+import net.javaguides.etustage.dao.userInfo;
 
-@WebServlet("/deleteFavouris")
-public class deleteFavouris extends HttpServlet {
+/**
+ * Servlet implementation class DeleteAnnonce
+ */
+@WebServlet("/DeleteAnnonce")
+public class DeleteAnnonce extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private favourisOperations addFavouris;
+	private userInfo userInfo;
 
-	public deleteFavouris() {
+	public DeleteAnnonce() {
 		super();
-		this.addFavouris = new favourisOperations();
+		this.userInfo = new userInfo();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		int id = Integer.parseInt(request.getParameter("id"));
+		int idAnnonce = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 		String typeOfUser = (String) session.getAttribute("type");
-		int idUser = (int) session.getAttribute("id");
-		if(typeOfUser.equals("entreprise")) {
-			
+		if (typeOfUser.equals("entreprise")) {
+
 			try {
-				DeleteAnnonceStagaireFromFav(request, response, idUser, id);
+				deleteAnnonceEntrp(request, response, idAnnonce);
 			} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else {
+		} else {
+
 			try {
-				DeleteAnnonceEntrepriseFromFav(request, response, idUser, id);
+				deleteAnnonceStag(request, response, idAnnonce);
 			} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
 
 	}
 
@@ -56,19 +57,18 @@ public class deleteFavouris extends HttpServlet {
 		doGet(request, response);
 	}
 
-	protected void DeleteAnnonceStagaireFromFav(HttpServletRequest request, HttpServletResponse response, int id_Entrp,
-			int id_AnnStag) throws ClassNotFoundException, SQLException, ServletException, IOException {
-
-		addFavouris.deleteFavourisEntrp(id_Entrp, id_AnnStag);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/showAnnonce?id=" + id_AnnStag);
+	protected void deleteAnnonceEntrp(HttpServletRequest request, HttpServletResponse response, int id_AnnEntrp)
+			throws ClassNotFoundException, SQLException, ServletException, IOException {
+		userInfo.deleteAnnonceEntrp(id_AnnEntrp);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AccueilServlet");
 		dispatcher.forward(request, response);
 	}
-	
-	protected void DeleteAnnonceEntrepriseFromFav(HttpServletRequest request, HttpServletResponse response, int id_Entrp,
-			int id_AnnStag) throws ClassNotFoundException, SQLException, ServletException, IOException {
 
-		addFavouris.deleteFavourisStag(id_Entrp, id_AnnStag);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/showAnnonce?id=" + id_AnnStag);
+	protected void deleteAnnonceStag(HttpServletRequest request, HttpServletResponse response, int id_AnnStag)
+			throws ClassNotFoundException, SQLException, ServletException, IOException {
+		userInfo.deleteAnnonceStag(id_AnnStag);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/AccueilServlet");
 		dispatcher.forward(request, response);
 	}
+
 }

@@ -44,6 +44,7 @@ public class AccueilServlet extends HttpServlet {
 			getAnnonceEntreprise(request, response);
 			getStagaireInfo(request, response, idUser);
 			getMesAnnonceStagaire(request, response, idUser);
+			getFavourisStagaire(request, response, idUser);
 		} else {
 			getAnnonceStagaire(request, response);
 			getEntrepriseInfo(request, response, idUser);
@@ -129,6 +130,17 @@ public class AccueilServlet extends HttpServlet {
 		try {
 			ArrayList<annonce_stagaire> listofFavEntreprise =favourisOperations.getFavourisEntreprise(idUser) ;
 			request.setAttribute("listofFavEntreprise", listofFavEntreprise);
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void getFavourisStagaire(HttpServletRequest request, HttpServletResponse response, int idUser) {
+		try {
+			ArrayList<annonce_entreprise> listofFavStagaire =favourisOperations.getFavourisStagaire(idUser) ;
+			request.setAttribute("listofStagaire", listofFavStagaire);
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

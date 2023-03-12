@@ -295,6 +295,33 @@
 
 			</c:if>
 
+			<c:if test="${sessionScope.type=='stagaire'}">
+				<c:forEach items="${listofStagaire}" var="annonce">
+
+					<!-- Card -->
+					<a href="showAnnonce?id=${annonce.getId_AnnEntrp()}"
+						class="flex space-x-6 rounded-lg drop-shadow-sm p-4 bg-softRed">
+						<!-- picture --> <img class="w-[194px] h-[175px] rounded-xl"
+						src="store/entreprise/${annonce.getSt_image()}" /> <!-- informations -->
+						<div class="flex flex-col items-start space-y-6">
+							<!-- title -->
+							<div class="flex flex-col space-y-2">
+								<h1 class="font-bold text-xl">${annonce.getTitre()}</h1>
+								<!-- domaine -->
+								<h2 class="text-lg text-grayText font-bold">${annonce.getDomaine()}</h2>
+							</div>
+							<!-- description -->
+							<p class="text-grayText text-lg opacity-80 font-lateef">
+								${annonce.getFirst50Chars()} .......</p>
+						</div> <!-- date -->
+						<h1 class="text-grayText font-bold">1/02/2023</h1>
+					</a>
+				</c:forEach>
+
+
+			</c:if>
+
+
 		</div>
 
 		<!-- MesAnnonces Cards -->
@@ -328,9 +355,12 @@
 								<button
 									class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
 									Update</button>
-								<button
-									class="bg-red text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
-									Delete</button>
+								<a href="DeleteAnnonce?id=${MesAnnonces.getId_AnnEntrp()}">
+									<button
+										class=" bg-red text-white w-[108px] h-[44px] rounded-lg
+									hover:opacity-80duration-150">Delete</button>
+								</a>
+
 							</div>
 						</div>
 					</div>
@@ -367,9 +397,11 @@
 								<button
 									class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
 									Update</button>
-								<button
-									class="bg-red text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
-									Delete</button>
+								<a href="DeleteAnnonce?id=${MesAnnonces.getId_AnnSatg()}">
+									<button
+										class=" bg-red text-white w-[108px] h-[44px] rounded-lg
+									hover:opacity-80duration-150">Delete</button>
+								</a>
 							</div>
 						</div>
 					</div>

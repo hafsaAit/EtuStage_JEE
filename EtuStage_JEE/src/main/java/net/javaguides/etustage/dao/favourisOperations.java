@@ -12,24 +12,26 @@ import net.javaguides.etustage.model.favouris_stagaire;
 
 public class favourisOperations extends Connect {
 
-	public boolean checkStagaireAnnonceisFavourite(int annonceId) throws SQLException, ClassNotFoundException {
+	public boolean checkStagaireAnnonceisFavourite(int annonceId,int id_Entrp) throws SQLException, ClassNotFoundException {
 
 		PreparedStatement preparedStatement;
 		ResultSet resultSet = null;
-		String sql = "SELECT *  FROM favouris_entreprise  WHERE id_AnnStag=?;";
+		String sql = "SELECT *  FROM favouris_entreprise  WHERE id_AnnStag=? AND id_Entrp=?;";
 		preparedStatement = this.connection().prepareStatement(sql);
 		preparedStatement.setInt(1, annonceId);
+		preparedStatement.setInt(2, id_Entrp);
 		resultSet = preparedStatement.executeQuery();
 		return resultSet.next();
 	}
 
-	public boolean checkEntrepriseAnnonceisFavourite(int annonceId) throws SQLException, ClassNotFoundException {
+	public boolean checkEntrepriseAnnonceisFavourite(int annonceId,int id_Stg) throws SQLException, ClassNotFoundException {
 
 		PreparedStatement preparedStatement;
 		ResultSet resultSet = null;
-		String sql = "SELECT *  FROM favouris_stagaire  WHERE id_AnnEntrp=?;";
+		String sql = "SELECT *  FROM favouris_stagaire  WHERE id_AnnEntrp=? AND id_Stag=?;";
 		preparedStatement = this.connection().prepareStatement(sql);
 		preparedStatement.setInt(1, annonceId);
+		preparedStatement.setInt(2, id_Stg);
 		resultSet = preparedStatement.executeQuery();
 		return resultSet.next();
 	}

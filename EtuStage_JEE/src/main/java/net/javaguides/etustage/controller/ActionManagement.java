@@ -37,19 +37,20 @@ public class ActionManagement extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
+		int idUser = (int) session.getAttribute("id");
     	String typeOfUser = (String) session.getAttribute("type");
 		System.out.println("---->" + id);
 		
 		if(typeOfUser.equals("entreprise")) {
 			try {
-				showAnnonceStagaireDetail(request, response, id);
+				showAnnonceStagaireDetail(request, response, id,idUser);
 			} catch (ClassNotFoundException | ServletException | IOException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}else {
 			try {
-				showAnnonceEntrepriseDetail(request, response, id);
+				showAnnonceEntrepriseDetail(request, response, id,idUser);
 			} catch (ClassNotFoundException | ServletException | IOException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -67,11 +68,11 @@ public class ActionManagement extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private void showAnnonceStagaireDetail(HttpServletRequest request, HttpServletResponse response,int id)
+	private void showAnnonceStagaireDetail(HttpServletRequest request, HttpServletResponse response,int id,int idUser)
 			throws ServletException, IOException, ClassNotFoundException, SQLException {
 		annonce_stagaire annonce_stagaire=userInfo.getAnnonceStagaireInfo(id);
 		stagaire stagaire=userInfo.getStagaireInfo(annonce_stagaire.getId_Stag());
-		boolean isFavourit=favourisOperations.checkStagaireAnnonceisFavourite(id);
+		boolean isFavourit=favourisOperations.checkStagaireAnnonceisFavourite(id,idUser);
 		
 		request.setAttribute("stagaire", stagaire); 
 		request.setAttribute("annonce_stagaire", annonce_stagaire);
@@ -80,11 +81,11 @@ public class ActionManagement extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
-	private void showAnnonceEntrepriseDetail(HttpServletRequest request, HttpServletResponse response,int id)
+	private void showAnnonceEntrepriseDetail(HttpServletRequest request, HttpServletResponse response,int id,int idUser)
 			throws ServletException, IOException, ClassNotFoundException, SQLException {
 		annonce_entreprise annonce_entreprise=userInfo.getAnnonceEntrepriseInfo(id);
 		entreprise entreprise=userInfo.getEntrepriseInfo(annonce_entreprise.getId_Entrp());
-		boolean isFavourit=favourisOperations.checkEntrepriseAnnonceisFavourite(id);
+		boolean isFavourit=favourisOperations.checkEntrepriseAnnonceisFavourite(id,idUser);
 		
 		request.setAttribute("entreprise", entreprise); 
 		request.setAttribute("annonce_entreprise", annonce_entreprise);

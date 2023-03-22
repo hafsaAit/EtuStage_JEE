@@ -25,6 +25,17 @@ public class annonce_entreprise {
 		Type_Stag = type_Stag;
 		Id_Entrp = id_Entrp;
 	}
+	
+	public annonce_entreprise(int id_AnnEntrp, String titre, String domaine, String description_Annc, String duree,
+			String type_Stag) {
+		super();
+		Id_AnnEntrp = id_AnnEntrp;
+		Titre = titre;
+		Description_Annc = description_Annc;
+		Domaine = domaine;
+		Duree = duree;
+		Type_Stag = type_Stag;
+	}
 
 	public annonce_entreprise(int id_AnnEntrp, String titre, String domaine, String description_Annc, String duree,
 			String type_Stag, int id_Entrp, String image) {
@@ -51,6 +62,7 @@ public class annonce_entreprise {
 		Id_Entrp = id_Entrp;
 	}
 
+	
 	public int getId_AnnEntrp() {
 		return Id_AnnEntrp;
 	}

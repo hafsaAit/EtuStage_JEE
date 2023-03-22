@@ -3,6 +3,10 @@ const AccueilContainer = document.getElementById("Container Accueil");
 const FavourisContainer = document.getElementById("Container Favouris");
 const MesAnnonceContainer = document.getElementById("Container MesAnnonces");
 const ProfileContainer = document.getElementById("Container Profile");
+const logOutShowBtn = document.getElementById("logout");
+const overlay = document.getElementById("overlay");
+const logOutPopup = document.getElementById("entpLoginPopup");
+const closeBtn = document.getElementById("close");
 
 links.forEach((link) => {
 	link.addEventListener("click", function(event) {
@@ -30,4 +34,15 @@ links.forEach((link) => {
 			ProfileContainer.classList.remove("hidden");
 		}
 	});
+});
+
+
+logOutShowBtn.addEventListener("click", () => {
+  overlay.classList.remove("hidden");
+  logOutPopup.classList.remove("hidden");
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+  logOutPopup.classList.add("hidden");
 });

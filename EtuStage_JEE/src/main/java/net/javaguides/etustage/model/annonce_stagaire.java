@@ -1,9 +1,6 @@
 package net.javaguides.etustage.model;
 
-/**
- * @author moude
- *
- */
+
 public class annonce_stagaire {
 	private int Id_AnnSatg;
 	private String Titre_Stage;
@@ -41,6 +38,17 @@ public class annonce_stagaire {
 		Type_stage = type_stage;
 		Duree = duree;
 		Id_Stag = id_Stag;
+	}
+	
+	public annonce_stagaire(int id_AnnSatg, String titre_Stage, String domaine_Stage, String description,
+			String type_stage, String duree) {
+		super();
+		Id_AnnSatg = id_AnnSatg;
+		Titre_Stage = titre_Stage;
+		Domaine_Stage = domaine_Stage;
+		Description = description;
+		Type_stage = type_stage;
+		Duree = duree;
 	}
 
 	public annonce_stagaire(String titre_Stage, String domaine_Stage, String description, String type_stage,

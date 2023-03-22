@@ -118,7 +118,6 @@ public class userInfo extends Connect {
 		return listOfStagaireAnnonce;
 	}
 
-	
 	public annonce_stagaire getAnnonceStagaireInfo(int id) throws SQLException, ClassNotFoundException {
 
 		annonce_stagaire stg = new annonce_stagaire();
@@ -152,7 +151,7 @@ public class userInfo extends Connect {
 		}
 		return entp;
 	}
-	
+
 	public void deleteAnnonceEntrp(int id_AnnEntrp) throws SQLException, ClassNotFoundException {
 		PreparedStatement preparedStatement;
 		ResultSet resultSet = null;
@@ -162,13 +161,43 @@ public class userInfo extends Connect {
 		preparedStatement.executeUpdate();
 
 	}
-	
+
 	public void deleteAnnonceStag(int id_AnnStag) throws SQLException, ClassNotFoundException {
 		PreparedStatement preparedStatement;
 		ResultSet resultSet = null;
 		String sql = "DELETE FROM  annonce_stagaire WHERE  annonce_stagaire.Id_AnnSatg=?";
 		preparedStatement = this.connection().prepareStatement(sql);
 		preparedStatement.setInt(1, id_AnnStag);
+		preparedStatement.executeUpdate();
+
+	}
+
+	public void UpdateAnnonceEntrp(annonce_entreprise annonce_entreprise) throws SQLException, ClassNotFoundException {
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "UPDATE annonce_entreprise SET Titre=?,Description_Annc=?,Duree=?,Type_Stag=?,domaine=? WHERE Id_AnnEntp=?;";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setString(1, annonce_entreprise.getTitre());
+		preparedStatement.setString(2, annonce_entreprise.getDescription_Annc());
+		preparedStatement.setString(3, annonce_entreprise.getDuree());
+		preparedStatement.setString(4, annonce_entreprise.getType_Stag());
+		preparedStatement.setString(5, annonce_entreprise.getDomaine());
+		preparedStatement.setInt(6, annonce_entreprise.getId_AnnEntrp());
+		preparedStatement.executeUpdate();
+
+	}
+	
+	public void UpdateAnnonceStag(annonce_stagaire annonce_stagaire) throws SQLException, ClassNotFoundException {
+		PreparedStatement preparedStatement;
+		ResultSet resultSet = null;
+		String sql = "UPDATE annonce_stagaire SET Titre_Stage=?,Domaine_Stage=?,Description=?,Type_stage=?,Duree=? WHERE Id_AnnSatg=?;";
+		preparedStatement = this.connection().prepareStatement(sql);
+		preparedStatement.setString(1, annonce_stagaire.getTitre_Stage());
+		preparedStatement.setString(2, annonce_stagaire.getDomaine_Stage());
+		preparedStatement.setString(3, annonce_stagaire.getDescription());
+		preparedStatement.setString(4, annonce_stagaire.getType_stage());
+		preparedStatement.setString(5, annonce_stagaire.getDuree());
+		preparedStatement.setInt(6, annonce_stagaire.getId_AnnSatg());
 		preparedStatement.executeUpdate();
 
 	}

@@ -60,12 +60,25 @@
   </style>
 </head>
 <body class="overflow-hidden">
-
+	<div id="overlay"
+		class="absolute hidden bg-black top-0 left-0 bottom-0 right-0 z-10 opacity-40"></div>
+	<div id="entpLoginPopup"
+		class="absolute hidden bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[400px] rounded-lg drop-shadow-xl">
+		<div
+			class="relative flex flex-col items-center px-16 pt-16 pb-6 w-full rounded-lg">
+			<img id="close"
+				class="absolute top-2 right-2 w-8 cursor-pointer hover:opacity-80 duration-150"
+				src="images/close.png" alt="close" />
+			<h1 class="text-4xl font-bold opacity-80">Want to logout?</h1>
+			<a href="welcome.jsp"><button type="submit" class="btn mt-10 px-16 py-4 self-center">Logout</button></a>
+		</div>
+	</div>
 	<header
 		class="bg-cyanBlue flex justify-between items-center py-4 px-8 rounded-b-2xl drop-shadow-sm">
 		<!-- Part 1 -->
 		<div class="flex items-center space-x-2">
-			<img class="h-16" src="images/LogoAccueill.png" alt="Logo" />
+			<img class="h-16 cursor-pointer" id="logout"
+				src="images/LogoAccueill.png" alt="Logo" />
 		</div>
 
 		<!-- Part 2 -->
@@ -352,10 +365,11 @@
 							<!-- date -->
 							<h1 class="text-grayText font-bold">1/02/2023</h1>
 							<div class="flex space-x-2">
-								<button
-									class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
-									Update</button>
-								<a href="DeleteAnnonce?id=${MesAnnonces.getId_AnnEntrp()}">
+								<a href="UpdateAnnonce?id=${MesAnnonces.getId_AnnEntrp()}">
+									<button
+										class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
+										Update</button>
+								</a> <a href="DeleteAnnonce?id=${MesAnnonces.getId_AnnEntrp()}">
 									<button
 										class=" bg-red text-white w-[108px] h-[44px] rounded-lg
 									hover:opacity-80duration-150">Delete</button>
@@ -394,10 +408,11 @@
 							<!-- date -->
 							<h1 class="text-grayText font-bold">1/02/2023</h1>
 							<div class="flex space-x-2">
-								<button
-									class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
-									Update</button>
-								<a href="DeleteAnnonce?id=${MesAnnonces.getId_AnnSatg()}">
+								<a href="UpdateAnnonce?id=${MesAnnonces.getId_AnnSatg()}">
+									<button
+										class="bg-darkBlue text-white w-[108px] h-[44px] rounded-lg hover:opacity-80 duration-150">
+										Update</button>
+								</a> <a href="DeleteAnnonce?id=${MesAnnonces.getId_AnnSatg()}">
 									<button
 										class=" bg-red text-white w-[108px] h-[44px] rounded-lg
 									hover:opacity-80duration-150">Delete</button>
